@@ -1,0 +1,659 @@
+/* ==========================================
+   SISTEMA DE ESTUDIANTES
+   DISEÑO COLORIDO PROFESIONAL
+========================================== */
+
+* {
+    box-sizing: border-box;
+}
+
+:root {
+    --azul: #2563eb;
+    --azul-oscuro: #172554;
+    --morado: #7c3aed;
+    --turquesa: #06b6d4;
+    --verde: #10b981;
+    --naranja: #f59e0b;
+    --rojo: #ef4444;
+    --fondo: #f1f5ff;
+    --texto: #24324b;
+    --borde: #e2e8f0;
+    --blanco: #ffffff;
+}
+
+body {
+    margin: 0;
+    min-height: 100vh;
+    background:
+        radial-gradient(circle at top left, #dbeafe 0, transparent 35%),
+        radial-gradient(circle at bottom right, #ede9fe 0, transparent 35%),
+        var(--fondo);
+    color: var(--texto);
+    font-family: "Segoe UI", Arial, sans-serif;
+}
+
+/* ==========================================
+   ENCABEZADOS
+========================================== */
+
+.contenedor {
+    max-width: 1250px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+.encabezado {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    gap: 20px;
+    padding: 35px;
+    color: white;
+    border-radius: 22px;
+    background: linear-gradient(120deg, #1d4ed8, #6d28d9, #0891b2);
+    box-shadow: 0 12px 30px #4338ca35;
+}
+
+.encabezado h1 {
+    margin: 0;
+    font-size: clamp(26px, 4vw, 38px);
+    font-weight: 800;
+}
+
+.encabezado .subtitulo {
+    color: #e0e7ff;
+    margin-top: 10px;
+}
+
+.etiqueta {
+    color: #dbeafe;
+    font-size: 12px;
+    font-weight: 800;
+    letter-spacing: 3px;
+}
+
+.insignia {
+    display: inline-flex;
+    align-items: center;
+    justify-content: center;
+    width: auto;
+    min-width: 0;
+    max-width: calc(100% - 20px);
+    height: 48px;
+    padding: 0 12px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    font-size: 14px;
+    font-weight: bold;
+    letter-spacing: 0.5px;
+}
+
+/* ==========================================
+   TARJETAS
+========================================== */
+
+.tarjeta {
+    margin-top: 25px;
+    padding: 30px;
+    background: var(--blanco);
+    border: 1px solid #e0e7ff;
+    border-radius: 20px;
+    box-shadow: 0 10px 30px #1e3a8a0c;
+}
+
+.contenedor > .tarjeta {
+    max-width: none;
+}
+
+.tarjeta h2 {
+    margin: 0 0 23px;
+    color: #312e81;
+    font-size: 21px;
+    font-weight: 800;
+}
+
+/* ==========================================
+   FORMULARIOS
+========================================== */
+
+.rejilla {
+    display: grid;
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+    gap: 20px;
+}
+
+label {
+    display: flex;
+    flex-direction: column;
+    gap: 9px;
+    color: #334155;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+input,
+select {
+    width: 100%;
+    padding: 13px 15px;
+    border: 1.5px solid #dbe3f0;
+    border-radius: 11px;
+    background: #f8faff;
+    color: #24324b;
+    font: inherit;
+    outline: none;
+    transition: .2s;
+}
+
+input:focus,
+select:focus {
+    border-color: var(--morado);
+    background: white;
+    box-shadow: 0 0 0 4px #7c3aed18;
+}
+
+.ancho-completo {
+    grid-column: 1 / -1;
+}
+
+/* ==========================================
+   BOTONES
+========================================== */
+
+.botones {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 12px;
+    margin-top: 25px;
+}
+
+.btn {
+    padding: 12px 19px;
+    border: none;
+    border-radius: 11px;
+    color: white;
+    font: inherit;
+    font-weight: 750;
+    cursor: pointer;
+    box-shadow: 0 5px 12px #00000015;
+    transition: transform .2s, box-shadow .2s, filter .2s;
+}
+
+.btn:hover {
+    transform: translateY(-3px);
+    filter: brightness(1.08);
+    box-shadow: 0 8px 18px #00000020;
+}
+
+.btn:active {
+    transform: scale(.97);
+}
+
+.btn:disabled {
+    opacity: .55;
+    cursor: wait;
+}
+
+.verde {
+    background: linear-gradient(135deg, #059669, #10b981);
+}
+
+.azul {
+    background: linear-gradient(135deg, #2563eb, #38bdf8);
+}
+
+.amarillo {
+    background: linear-gradient(135deg, #d97706, #fbbf24);
+}
+
+.morado {
+    background: linear-gradient(135deg, #7c3aed, #a855f7);
+}
+
+.rojo {
+    background: linear-gradient(135deg, #dc2626, #f87171);
+}
+
+.gris {
+    background: linear-gradient(135deg, #475569, #94a3b8);
+}
+
+.oscuro {
+    background: linear-gradient(135deg, #172554, #334155);
+}
+
+/* ==========================================
+   MENSAJES
+========================================== */
+
+.mensaje {
+    min-height: 22px;
+    margin-top: 18px;
+    font-size: 14px;
+    font-weight: 700;
+}
+
+.mensaje.ok {
+    color: #059669;
+}
+
+.mensaje.error {
+    color: #dc2626;
+}
+
+/* ==========================================
+   TABLA DE ESTUDIANTES
+========================================== */
+
+.encabezado-lista {
+    display: flex;
+    align-items: center;
+    justify-content: space-between;
+    gap: 18px;
+    margin-bottom: 22px;
+}
+
+.encabezado-lista h2 {
+    margin-bottom: 5px;
+}
+
+.subtitulo {
+    color: #64748b;
+    margin: 8px 0 0;
+}
+
+.filtro {
+    max-width: 280px;
+}
+
+.tabla-contenedor {
+    overflow-x: auto;
+    border-radius: 13px;
+    border: 1px solid var(--borde);
+}
+
+table {
+    width: 100%;
+    border-collapse: collapse;
+    font-size: 13px;
+    background: white;
+}
+
+th {
+    padding: 16px 13px;
+    background: linear-gradient(120deg, #312e81, #2563eb);
+    color: white;
+    text-align: left;
+    font-weight: 800;
+    white-space: nowrap;
+}
+
+td {
+    padding: 14px 13px;
+    border-bottom: 1px solid #e8edf5;
+    white-space: nowrap;
+}
+
+tbody tr:nth-child(even) {
+    background: #f8faff;
+}
+
+tbody tr {
+    transition: background .2s;
+    cursor: pointer;
+}
+
+tbody tr:hover {
+    background: #e0e7ff;
+}
+
+.vacio {
+    text-align: center;
+    color: #64748b;
+    padding: 28px;
+    cursor: default;
+}
+
+/* ==========================================
+   PIE DE PÁGINA
+========================================== */
+
+footer {
+    padding: 28px 0;
+    text-align: center;
+    color: #64748b;
+    font-size: 13px;
+}
+
+/* ==========================================
+   LOGIN Y REGISTRO
+========================================== */
+
+body:has(.tarjeta):not(:has(.contenedor)) {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    padding: 25px;
+}
+
+/* ==========================================
+   LOGO JR - IDENTIDAD DEL SISTEMA
+========================================== */
+
+.tarjeta .logo {
+    width: 105px;
+    height: 105px;
+    margin: 0 auto 22px;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+
+    border-radius: 28px;
+    background: linear-gradient(135deg, #172554, #312e81, #2563eb);
+
+    border: 2px solid #38bdf8;
+    box-shadow:
+        0 0 15px #2563eb80,
+        0 0 30px #7c3aed40;
+
+    color: white;
+    font-size: 43px;
+    font-weight: 900;
+    letter-spacing: -5px;
+    font-style: italic;
+    position: relative;
+}
+
+.tarjeta .logo::after {
+    content: "";
+    position: absolute;
+    width: 75%;
+    height: 4px;
+    bottom: 13px;
+    border-radius: 10px;
+    background: linear-gradient(90deg, #06b6d4, #a855f7);
+}
+
+.tarjeta .logo span {
+    background: linear-gradient(135deg, #ffffff, #67e8f9);
+    -webkit-background-clip: text;
+    background-clip: text;
+    color: transparent;
+}
+
+body:has(.tarjeta):not(:has(.contenedor)) .tarjeta {
+    width: 100%;
+    max-width: 480px;
+    padding: 38px;
+    border-top: 6px solid var(--morado);
+}
+
+body:has(.tarjeta):not(:has(.contenedor)) .tarjeta h1,
+body:has(.tarjeta):not(:has(.contenedor)) .tarjeta > p {
+    text-align: center;
+}
+
+.tarjeta form {
+    display: flex;
+    flex-direction: column;
+    gap: 13px;
+    margin-top: 22px;
+}
+
+.tarjeta form button,
+.opcion a,
+.form-fila button {
+    padding: 13px 17px;
+    border: none;
+    border-radius: 10px;
+    background: linear-gradient(120deg, #2563eb, #7c3aed);
+    color: white;
+    font-weight: 800;
+    cursor: pointer;
+    text-decoration: none;
+}
+
+.tarjeta form button:hover,
+.opcion a:hover,
+.form-fila button:hover {
+    filter: brightness(1.1);
+}
+
+.tarjeta > a {
+    display: block;
+    margin-top: 12px;
+    text-align: center;
+    color: var(--azul);
+    font-weight: 800;
+    text-decoration: none;
+}
+/* ==========================================
+   CRÉDITO DEL DESARROLLADOR
+========================================== */
+
+.credito {
+    margin: 18px auto 5px;
+    padding: 13px 10px;
+    text-align: center;
+    border-top: 1px solid #e0e7ff;
+    color: #64748b;
+    font-size: 10px;
+    font-weight: 800;
+    letter-spacing: 1.3px;
+    line-height: 1.8;
+}
+
+.credito strong {
+    display: block;
+    margin-top: 5px;
+    color: #4338ca;
+    font-size: 12px;
+    letter-spacing: 1px;
+}
+
+/* ==========================================
+   PANEL PRINCIPAL
+========================================== */
+
+.barra {
+    display: flex;
+    justify-content: space-between;
+    align-items: center;
+    flex-wrap: wrap;
+    gap: 15px;
+    padding: 20px 35px;
+    background: linear-gradient(120deg, #172554, #4338ca, #0891b2);
+    color: white;
+}
+
+.perfil {
+    display: flex;
+    align-items: center;
+    gap: 13px;
+    flex-wrap: wrap;
+}
+
+.perfil a {
+    color: white;
+    font-weight: 800;
+    text-decoration: none;
+}
+
+.avatar {
+    font-size: 28px;
+}
+
+.etiqueta {
+    font-weight: 800;
+}
+
+.contenido {
+    max-width: 1200px;
+    margin: 35px auto;
+    padding: 0 20px;
+}
+
+.contenido h1 {
+    color: #312e81;
+}
+
+.opciones {
+    display: grid;
+    grid-template-columns: repeat(auto-fit, minmax(240px, 1fr));
+    gap: 22px;
+    margin-top: 25px;
+}
+
+.opcion {
+    padding: 27px;
+    background: white;
+    border: 1px solid #e0e7ff;
+    border-radius: 18px;
+    box-shadow: 0 10px 25px #1e3a8a0c;
+    transition: transform .2s;
+}
+
+.opcion:hover {
+    transform: translateY(-4px);
+}
+
+.opcion h2 {
+    color: #4338ca;
+}
+
+/* ==========================================
+   ADMINISTRACIÓN DE USUARIOS
+========================================== */
+
+.form-fila {
+    display: flex;
+    align-items: center;
+    gap: 8px;
+}
+
+.form-fila select {
+    padding: 9px;
+    border-radius: 8px;
+}
+
+/* ==========================================
+   DISEÑO RESPONSIVE
+========================================== */
+
+@media (max-width: 760px) {
+    .contenedor {
+        margin: 18px auto;
+        padding: 0 12px;
+    }
+
+    .encabezado,
+    .tarjeta {
+        padding: 21px;
+    }
+
+    .rejilla {
+        grid-template-columns: 1fr;
+    }
+
+    .ancho-completo {
+        grid-column: auto;
+    }
+
+    .encabezado-lista {
+        align-items: stretch;
+        flex-direction: column;
+    }
+
+    .filtro {
+        max-width: none;
+    }
+
+    .barra {
+        padding: 18px;
+    }
+
+    .contenido {
+        padding: 0 12px;
+    }
+
+    .form-fila {
+        flex-wrap: wrap;
+    }
+}
+
+@media (max-width: 480px) {
+    .encabezado {
+        padding: 23px;
+    }
+
+    .insignia {
+        width: 55px;
+        height: 55px;
+    }
+
+    .botones {
+        flex-direction: column;
+    }
+
+    .btn {
+        width: 100%;
+    }
+
+    body:has(.tarjeta):not(:has(.contenedor)) .tarjeta {
+        padding: 25px 20px;
+    }
+}
+/* LOGO JR DEL DASHBOARD */
+
+.marca-jr {
+    display: inline-flex;
+    align-items: center;
+    gap: 10px;
+    color: #172554;
+    font-weight: 900;
+}
+
+.marca-jr span {
+    display: inline-flex;
+    width: 38px;
+    height: 38px;
+    align-items: center;
+    justify-content: center;
+    border-radius: 10px;
+    background: linear-gradient(135deg, #172554, #2563eb);
+    border: 1px solid #38bdf8;
+    color: white;
+    font-size: 17px;
+    font-style: italic;
+    box-shadow: 0 0 12px #2563eb70;
+}
+/* LOGOTIPO UNIREMINGTON EN EL LOGIN */
+
+.logo-uniremington {
+    width: 100%;
+    margin: 0 auto 25px;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+}
+
+.logo-uniremington img {
+    display: block;
+    width: 100%;
+    max-width: 300px;
+    height: 110px;
+    object-fit: contain;
+}
+/* AJUSTE DE LA INSIGNIA FORMULARIO */
+.insignia {
+    display: inline-flex !important;
+    align-items: center;
+    justify-content: center;
+    width: auto !important;
+    min-width: 0;
+    height: 48px !important;
+    padding: 0 14px;
+    box-sizing: border-box;
+    white-space: nowrap;
+    font-size: 14px !important;
+    letter-spacing: 0.5px;
+}
